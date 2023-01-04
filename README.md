@@ -1,6 +1,5 @@
-# US-Inflation-Rates-Capstone-
-Using FbProphet to forecast US Inflation rates
-
+# US-Inflation-Rates-Capstone-Project
+This is a Capstone project using a Timeseries ML model (FbProphet) to forecast US Inflation rates in 2023.
 
 ## Dataset Description
 

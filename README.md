@@ -1,4 +1,10 @@
-# US-Inflation-Rates-Capstone-Project
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/clone326/US-Inflation-Rates-Capstone-">
+    <img src="https://www.uab.edu/news/images/2018/Inflation_stream.png" alt="Inflation" width="80" height="80">
+  </a>
+
 This is a Capstone project using a Timeseries ML model (FbProphet) to forecast US Inflation rates in 2023.
 
 ## Dataset Description

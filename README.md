@@ -15,11 +15,11 @@
 2. [Libraries used](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#libraries-used)
 3. [Exploratory Data Analysis](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#exploratory-data-analysis)
       - [Correlation Heatmap](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#correlation-heatmap)
-4. [fbProphet](url)
-      - [Univariate]
-      - [Seasonality]
-      - [Multivariate]
-5. [Final approach]
+4. [fbProphet](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#fbprophet)
+      - [Univariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#univariate)
+      - [Seasonality](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#seasonality)
+      - [Multivariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#multivariate)
+5. [Final approach](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#final-approach)
 6. [Tableau Dashboard]
 
 ## About The Project
@@ -102,4 +102,27 @@ Data on these inflation drivers was downloaded from <a href="https://beta.bls.go
   ![image](https://user-images.githubusercontent.com/113367891/210975654-7f74edd2-13bf-4c7b-bb6a-eddea99c6aa7.png)
 
 
+  ## fbProphet
+  Introduction: fbProphet (or Prophet) is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well.
   
+Prophet is [open source software](https://code.facebook.com/projects/) released by Facebook’s [Core Data Science team](https://research.fb.com/category/data-science/). It is available for download on [CRAN](https://cran.r-project.org/package=prophet) and [PyPI](https://pypi.python.org/pypi/prophet/).
+  
+  [![Custom badge](https://img.shields.io/static/v1?label=Support&message=For-more-Info&color=informational&style=plastic)](https://facebook.github.io/prophet/)
+  
+  ## Univariate
+  
+  ![Univariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Univariate.png?raw=true)
+  
+  ## Seasonality
+  
+  ![Seasonality](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Seasonality.png?raw=true)
+  
+  ## Multivariate
+  
+  ![Multivariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Multivariate.png?raw=true)
+  
+  ## Final Approach
+  
+  ![Final](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/True_Predict_MultiVariate.png?raw=true)
+  
+  ## Tableau Dashboard

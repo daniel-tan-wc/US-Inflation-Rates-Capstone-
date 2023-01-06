@@ -37,11 +37,17 @@
 <div align="left">
 This is a Capstone project using a Timeseries ML model (FbProphet) to forecast US Inflation rates in 2023. Many factors contributes to Inflation but the main drivers are:
 1. Consumer Price Index
+
 2. Employment
+
 3. Wages
+
 4. Country's Gross Domestic Product
+
 5  Federal and Bank Interest Rates
+
 6. Currency Strength
+
 7. Import & Export Price Index
 
 Data on these inflation drivers was downloaded from <a href="https://beta.bls.gov/dataQuery/search">here</a><img src="https://beta.bls.gov/images/bls_emblem_trans.png" alt="Data Finder" width="80" height="80">

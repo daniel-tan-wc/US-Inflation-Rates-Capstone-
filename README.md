@@ -20,7 +20,8 @@
       - [Seasonality](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#seasonality)
       - [Multivariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#multivariate)
 5. [Final approach](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#final-approach)
-6. [Tableau Dashboard]
+6. [Tableau Dashboard](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#tableau-dashboard)
+7. [Conclusion](https://github.com/clone326/US-Inflation-Rates-Capstone-/edit/main/README.md#conclusion)
 
 ## About The Project
 
@@ -83,7 +84,7 @@ Data on these inflation drivers was downloaded from <a href="https://beta.bls.go
   
   ### Fed & Bank Rates
   ![Fed and Bank rates](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Fed%20&%20Bank%20rates.png?raw=true)
-  Naturally, financial crisis would hit interest rates harder than a pandemic, but we can also see rates being an all time low during 2021 to boost economic activity.
+  Naturally, financial crisis would hit interest rates harder than a pandemic, and we can also see rates being an all time low during 2021 to boost economic activity.
   
   ### USA's GDP
   ![GDP](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/GDP.png?raw=true)
@@ -110,19 +111,105 @@ Prophet is [open source software](https://code.facebook.com/projects/) released 
   [![Custom badge](https://img.shields.io/static/v1?label=Support&message=For-more-Info&color=informational&style=plastic)](https://facebook.github.io/prophet/)
   
   ## Univariate
-  
+  Model was trained based on only 1 variable, "CPI for all items".
   ![Univariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Univariate.png?raw=true)
   
-  ## Seasonality
+  After the train-test split of 80-20, Evaluation metrics used:
+  * Mean Absolute Error = 7.27
+  * Mean Absolute Percentage Error = 2.55%
   
+  This means that the model is off by 7.27 index points which is about 2.55% (This is our baseline).
+  
+  ## Seasonality
+  Model was trained based on only 1 variable, "CPI for all items", and
+  ```sh
+  model_season = Prophet(yearly_seasonality=True)
+  model_season.add_seasonality(period = 30.4, name='monthly', fourier_order=5)
+  ```
   ![Seasonality](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Seasonality.png?raw=true)
   
-  ## Multivariate
+  After the train-test split of 80-20, Evaluation metrics used:
+  * Mean Absolute Error = 8.07
+  * Mean Absolute Percentage Error = 2.84%
   
+  This means that the model is off by 8.07 index points which is about 2.84% (Worst than baseline :-1::thumbsdown:).
+  
+  ## Multivariate
+  Model was trained with all variables, "CPI for all items"
+  ```sh
+  # Create prophet model
+  model_multivariate = Prophet()
+
+  # Add regressor
+  for i in data.columns[3:]:
+    model_multivariate.add_regressor(i, standardize=False)
+  ```
   ![Multivariate](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Forecast_Multivariate.png?raw=true)
+  
+  After the train-test split of 80-20, Evaluation metrics used:
+  * Mean Absolute Error = 3.52
+  * Mean Absolute Percentage Error = 1.25%
+  
+  This means that the model is off by 3.52 index points which is about 1.2% (Better than baseline :-1::thumbsup:).
   
   ## Final Approach
   
+  In order to predict beyond the dataset's dates, i.e. Nov 2022 onwards, we will need to forecast the other feature variables before inserting them into our Multivariate model to predict our label "CPI for all items".
+  
+  Hence, 2 dictionaries were created to generate the univariate models and forecasted values for each of our feature variables:
+  1. model_dictionary
+  2. forecast_dictionary
+  ```sh
+  model_list = data.columns[2:]
+
+model_dict = {}
+
+forecast_dict = {}
+
+for idx, key in enumerate(model_list):
+    # print("Moving onto next data column.")
+
+    data_sliced = data.iloc[:,[0, idx + 2]]
+    data_sliced.rename(columns = {data_sliced.columns[1]:'y'}, inplace=True)
+    # print("Data sliced and renamed.")
+    
+    #Training model with seasonality
+    # print("Starting model training.")
+    model_fb = Prophet(yearly_seasonality=True)
+    model_fb.add_seasonality(period = 30.4, name='monthly', fourier_order=5)
+    model_fb.fit(data_sliced)
+    model_dict[key] = model_fb
+
+    # print("Starting future forecast.")
+    #Create time range for the forecast
+    future = model_fb.make_future_dataframe(periods = 10, freq = 'MS')
+    
+    #Make forecast prediction
+    forecast = model_fb.predict(future)
+    forecast_dict[key] = forecast
+    # print("Forecast generated and stored.")
+ ```
+  
+  `Each forecasted value for the feature variables can be viewed after downloading the Capstone_dataset.csv and running the Captsone Assignment_Daniel Tan.ipynb`
+  
+  After adding forecasted values of feature variables onto the dataset, I fit the dataset into our trained multivariate model to predict "CPI for all items" from Nov 2022 till Aug 2023 (I chose an arbitrary number of 10 months for future prediction)
+  Result:
   ![Final](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/True_Predict_MultiVariate.png?raw=true)
   
+  
   ## Tableau Dashboard
+  This dashboard allows you to set the date range, choose which CPI type you wish to view in the line graph and also choose which inflation type you wish to see in the table below for its monthly changes.
+  `Caveat: Some inflation values may not be seen as the change is negligible (below 2 decimal percentages)`
+  ![image](https://user-images.githubusercontent.com/113367891/211807927-060f2a11-ff2e-47b2-a2e4-e90ed7f80356.png)
+  
+  ## Conclusion
+  November 2022 is supposed to be the month that inflation drops the most because of:
+  * CPI drop in Energy :battery: and Gas :fuelpump:
+  * High Fed and Bank Rates :bank:
+  * Weaker USE strength :us:
+  
+  However, because the data was up till Oct 2022, and in Dec 2022 Fed and Bank rates increased again.
+  
+  [Forbes News Link](https://www.forbes.com/sites/simonmoore/2022/12/15/fed-sees-further-hikes-in-2023-heres-what-could-change-that/?sh=7f9a4a255a17)
+  
+  We **MAY** see inflation drop this month (Jan 2022)

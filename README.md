@@ -1,6 +1,6 @@
 
 <h3 align="center">Forecasting US Inflation Rates in 2023</h3>
-
+<a name="readme-top"></a>
 <br />
 <div align="center">
   <a href="https://github.com/clone326/US-Inflation-Rates-Capstone-">
@@ -38,12 +38,16 @@ This is a Capstone project using a Timeseries ML model (FbProphet) to forecast U
 
 Data on these inflation drivers was downloaded from <a href="https://beta.bls.gov/dataQuery/search">here</a><img src="https://beta.bls.gov/images/bls_emblem_trans.png" alt="Data Finder" width="80" height="80">
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Libraries Used
   ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=plastic&logo=pandas&logoColor=white)\
   ![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=plastic&logo=plotly&logoColor=white)\
   ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=plastic&logo=Matplotlib&logoColor=black)\
   ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=plastic&logo=scikit-learn&logoColor=white)\
   ![Custom badge](https://img.shields.io/static/v1?label=fbProphet&message=0.7.1&color=informational&style=plastic)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Exploratory Data Analysis
   ### Data Types
@@ -90,6 +94,8 @@ Data on these inflation drivers was downloaded from <a href="https://beta.bls.go
   ![GDP](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/GDP.png?raw=true)
   Sharp hit again by the pandemic as opposed to the financial crisis
   
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+  
   ## Correlation Heatmap
   
   ![Correlation Heatmap](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/Correlation%20Heatmap.png?raw=true)
@@ -102,13 +108,16 @@ Data on these inflation drivers was downloaded from <a href="https://beta.bls.go
   
   ![image](https://user-images.githubusercontent.com/113367891/210975654-7f74edd2-13bf-4c7b-bb6a-eddea99c6aa7.png)
 
-
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+  
   ## fbProphet
   Introduction: fbProphet (or Prophet) is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well.
   
 Prophet is [open source software](https://code.facebook.com/projects/) released by Facebook’s [Core Data Science team](https://research.fb.com/category/data-science/). It is available for download on [CRAN](https://cran.r-project.org/package=prophet) and [PyPI](https://pypi.python.org/pypi/prophet/).
   
   [![Custom badge](https://img.shields.io/static/v1?label=Support&message=For-more-Info&color=informational&style=plastic)](https://facebook.github.io/prophet/)
+  
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Univariate
   Model was trained based on only 1 variable, "CPI for all items".
@@ -119,6 +128,8 @@ Prophet is [open source software](https://code.facebook.com/projects/) released 
   * Mean Absolute Percentage Error = 2.55%
   
   This means that the model is off by 7.27 index points which is about 2.55% (This is our baseline).
+  
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Seasonality
   Model was trained based on only 1 variable, "CPI for all items", and
@@ -133,6 +144,8 @@ Prophet is [open source software](https://code.facebook.com/projects/) released 
   * Mean Absolute Percentage Error = 2.84%
   
   This means that the model is off by 8.07 index points which is about 2.84% (Worst than baseline :-1::thumbsdown:).
+  
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Multivariate
   Model was trained with all variables, "CPI for all items"
@@ -151,6 +164,8 @@ Prophet is [open source software](https://code.facebook.com/projects/) released 
   * Mean Absolute Percentage Error = 1.25%
   
   This means that the model is off by 3.52 index points which is about 1.2% (Better than baseline :-1::thumbsup:).
+  
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Final Approach
   
@@ -196,11 +211,14 @@ for idx, key in enumerate(model_list):
   Result:
   ![Final](https://github.com/clone326/US-Inflation-Rates-Capstone-/blob/main/Images/True_Predict_MultiVariate.png?raw=true)
   
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Tableau Dashboard
   This dashboard allows you to set the date range, choose which CPI type you wish to view in the line graph and also choose which inflation type you wish to see in the table below for its monthly changes.
   `Caveat: Some inflation values may not be seen as the change is negligible (below 2 decimal percentages)`
   ![image](https://user-images.githubusercontent.com/113367891/211807927-060f2a11-ff2e-47b2-a2e4-e90ed7f80356.png)
+  
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
   ## Conclusion
   November 2022 is supposed to be the month that inflation drops the most because of:
